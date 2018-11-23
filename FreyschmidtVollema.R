@@ -8,3 +8,5 @@ library(psych)
 data()
 
 # Auswahl Datensatz
+data(starwars)
+starwars
