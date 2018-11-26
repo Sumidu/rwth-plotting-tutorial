@@ -23,7 +23,6 @@ ggplot(data = starwars) +
 
 ggsave("duettmannschroeder_boxplott.pdf", width = 7, height = 5)
 
-#library(ggplot2)
 
 
 
