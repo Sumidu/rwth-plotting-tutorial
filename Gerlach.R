@@ -18,7 +18,7 @@ ggplot(data = starwars) +
 
 ggsave("Gerlach_bar.pdf")
 
-
+#hoffentlich klappts jetzt 
 
 
 
