@@ -19,3 +19,5 @@ ggplot(data = starwars) +
     y = "height in cm") +
   theme_minimal()
 
+ggsave("leblancniessenboxplot.pdf", width = 29.7, height = 21.0, units = "cm")
+
