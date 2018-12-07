@@ -12,11 +12,11 @@ mpg
 ggplot(data = mpg) +
   aes(x = class, y = cty) +
   geom_boxplot(fill = "#0c4c8a") +
-  labs(title = "Unterschiedlicher Benzinverbrauch von Fahrzeugklassen",
+  labs(title = "Pickups und SUVs haben einen hohen Benzinverbrauch",
     x = "Fahrzeugklasse",
-    y = "Bezinverbrauch im Stadtverkehr [miles/gallon]",
+    y = "Reichweite in miles/gallon",
     caption = "Datenpunkte sind Ausreißer",
-    subtitle = "Boxplot des Benzinverbrauchs in miles per gallon unterschiedlicher Fahrzeugklassen") +
+    subtitle = "Boxplot der Reichweite in miles per gallon unterschiedlicher Fahrzeugklassen") +
   theme_minimal() -> benzinverbrauch 
 
 #breite = 15
