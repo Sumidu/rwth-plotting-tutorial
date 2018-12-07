@@ -24,13 +24,7 @@ data(starwars)
 starwars
 library(ggplot2)
 
-# Test Boxplot Größe "height"
-ggplot(data = starwars) +
-  aes(x = height, y = height) +
-  geom_boxplot(fill = "#ffffff") +
-  coord_flip() +
-  theme_minimal()
-library(ggplot2)
+#Boxplot Erscheinungsbild Universumsbewohner (Vergleich Größe und Geschlecht)
 
 ggplot(data = starwars) +
   aes(x = eye_color, y = skin_color) +
