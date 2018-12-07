@@ -6,7 +6,12 @@
 library(tidyverse)
 library(psych)
 
-?starwars
+
+
+data(starwars)
+starwars
+
+
 library(ggplot2)
 
 ggplot(data = starwars) +
@@ -22,5 +27,4 @@ ggplot(data = starwars) +
 
 
 
-data(starwars)
-starwars
+
