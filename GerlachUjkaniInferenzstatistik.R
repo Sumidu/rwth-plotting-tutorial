@@ -46,4 +46,4 @@ data_robot %>%
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes") +
   NULL
 
-ggsave(file="GerlachUjkaniPunktdiagramm.pdf", width=10)
+ggsave(file="GerlachUjkaniPunktdiagramm.pdf", width=11)
