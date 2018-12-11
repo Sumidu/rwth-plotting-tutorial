@@ -38,10 +38,10 @@ data_robot %>%
   geom_line(aes(group = gender)) +
   scale_colour_manual(values = c(rwthcolor$blue, rwthcolor$red)) +
   theme_grey() +
-  labs(title = "Männer, Schüler und Studierende haben eine höhere Schwierigkeitspräferenz!",
-       subtitle = "Punktdiagramm: DIFFPREF im Vergleich zwischen ArbeitnehmerInnen und Studierenden, gruppiert nach Geschlecht",
+  labs(title = "Männliche Schüler und Studierende weisen die höchste Schwierigkeitspräferenz auf!",
+       subtitle = "Punktdiagramm: Präferenz für schwierige Aufgaben im Vergleich zwischen ArbeitnehmerInnen und Studierenden, gruppiert nach Geschlecht",
        x = "Beruf",
-       y = "DIFFPREF [1 - 6]",
+       y = "Schwierigkeitspräferenz [1 - 6]",
        colour = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes") +
   NULL
