@@ -1,5 +1,7 @@
 ### Einaldung Anne
 
+<<<<<<< HEAD
+=======
 # Anne Packages laden
 install.packages("tidyverse")
 
@@ -11,6 +13,7 @@ install.packages("esquisse")
 
 install.packages("ggthemes")
 
+>>>>>>> c5422b4a198ffac65a6142c9cf77d5b5416f0dd0
 # Bibliothek laden
 library(tidyverse)
 library(psych)
@@ -18,6 +21,11 @@ library(psych)
 # Liste der verfügbaren Datensätze
 data()
 
+<<<<<<< HEAD
+# Auswahl Datensatz
+data(starwars)
+starwars
+=======
 
 # Auswahl Datensatz
 data(starwars)
@@ -31,3 +39,4 @@ ggplot(data = starwars) +
   coord_flip() +
   theme_minimal()
 
+>>>>>>> c5422b4a198ffac65a6142c9cf77d5b5416f0dd0
