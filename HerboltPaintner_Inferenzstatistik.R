@@ -1,3 +1,5 @@
+###Inferenzstatistik Herbolt, Paintner
+
 source("install_libraries.R")
 
 source("corporateIdentity.R")
@@ -10,9 +12,11 @@ library(jmv)
 rwthcolor <- hcictools::rwth.colorpalette()
 
 data_robot <- readRDS("data/robo_pflege.rds")
+
 ## Unverbundener T-Test. Hypothese: Männer und Frauen unterscheiden sich im KUT.
 t.test( filter(data_robot, gender == "weiblich")$kut, 
         filter(data_robot, gender == "männlich")$kut )
+
 
 
 data_robot %>% 
@@ -33,7 +37,9 @@ data_robot %>%
        fill = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes.") +
   NULL
-ggsave("HildebrandtCaleroValdesBalkendiagrammTtest.pdf", width = 6, height = 5)
+
+ggsave("HerboltPaintnerBalkendiagrammTtest.pdf", width = 6, height = 5)
+
 
 data_robot %>% 
   filter(gender != "keine Angabe") %>% 
@@ -53,8 +59,7 @@ data_robot %>%
        colour = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes. Y-Achse ist aus Gründen der Lesbarkeit verschoben.") +
   NULL
-#ggsave("HildebrandtCaleroValdesPunktdiagrammTtest.pdf", width = 6, height = 5)
-
+#ggsave("HerboltPaintnerPunktdiagrammTtest.pdf", width = 6, height = 5)
 
 
 ## Zweifaktorielle ANOVA. Hypothese: Geschlecht und Erwerbstätigenstatus haben einen Einfluss auf KUT.
@@ -64,6 +69,7 @@ data_robot %>%
   jmv::anova(dep = "kut", 
              factors = c("job_type", "gender") 
   ) -> res
+
 
 res$main 
 
@@ -86,5 +92,5 @@ data_robot %>%
        colour = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes") +
   NULL
-#ggsave("HildebrandtCaleroValdesPunktdiagrammANOVA.pdf", width = 6, height = 5)
+#ggsave("HHerboltPaintnerPunktdiagrammANOVA.pdf", width = 6, height = 5)
 
