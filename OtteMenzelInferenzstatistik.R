@@ -25,7 +25,7 @@ t.test( filter(data_robot, gender == "weiblich")$robo_bed,
 data_robot %>% 
   filter(gender != "keine Angabe") %>% 
   group_by(gender) %>% 
-  summarise(mean_robo_bed = mean(robo_bed)-1, sem_robo_bed = std.error(robo_bed)) %>% 
+  summarise(mean_robo_bed = mean(robo_bed, na.rm = TRUE)-1, sem_robo_bed = std.error(robo_bed, na.rm = TRUE)) %>% 
   ggplot() +
   aes(x = gender, weight = mean_robo_bed, fill = gender, ymin = mean_robo_bed-sem_robo_bed, ymax = mean_robo_bed+sem_robo_bed) +
   geom_bar(width = 0.5) +
@@ -33,7 +33,7 @@ data_robot %>%
   geom_errorbar(width = 0.2) +
   theme_minimal() +
   ylim(0,5) +
-  labs(title = "Frauen wollen eher von einem Roboter ins Bett gebracht werden als Männer", 
+  labs(title = "Männer wollen eher von einem Roboter ins Bett gebracht werden als Frauen", 
        subtitle = "Balkendiagramm: robo_bed im Vergleich zwischen Männern und Frauen ", 
        x = "Geschlecht",
        y = "robo_bed [0 - 5]",
