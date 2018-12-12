@@ -43,3 +43,4 @@ ggplot() +
   NULL
 ggsave("DuettmannSchroederBalkendiagrammTtest.pdf", width = 6, height = 5)
 
+
