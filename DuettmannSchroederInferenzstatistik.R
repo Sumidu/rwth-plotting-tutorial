@@ -26,19 +26,20 @@ t.test (filter (data_robot, gender == "weiblich")$robo_bath,
 data_robot %>% 
   filter(gender != "keine Angabe") %>% 
   group_by(gender) %>% 
-  summarise(mean_robo_bath = mean(robo_bath)-1, sem_robo_bath = std.error(robo_bath)) %>% 
+  summarise(mean_robo_bath = mean(robo_bath, na.rm = TRUE)-1, sem_robo_bath = std.error(robo_bath, na.rm = TRUE)) %>% 
 ggplot() +
-  aes(x = gender, weight = robo_bath, fill = gender, ymin = mean_robo_bath - sem_robo_bath, ymax = mean_robo_bath + sem_robo_bath) +
+  aes(x = gender, weight = mean_robo_bath, fill = gender, ymin = mean_robo_bath - sem_robo_bath, ymax = mean_robo_bath + sem_robo_bath) +
   scale_fill_manual(values = c(rwthcolor$blue, rwthcolor$red)) +
   geom_bar(width = 0.5) +
   geom_errorbar(width = 0.2) +
   ylim(0,5) +
   theme_gray() +
-  labs(title = "Frauen lassen sich eher von einem Roboter baden als Männer", 
+  labs(title = "Männer lassen sich eher von einem Roboter baden als Frauen", 
      subtitle = "Balkendiagramm: robo_bath im Vergleich zwischen Männern und Frauen ", 
      x = "Geschlecht",
      y = "robo_bath [0 - 5]",
      fill = "Geschlecht",
-     caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes.") 
-
+     caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes.") +
+  NULL
+ggsave("DuettmannSchroederBalkendiagrammTtest.pdf", width = 6, height = 5)
 
