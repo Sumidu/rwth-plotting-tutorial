@@ -29,8 +29,8 @@ data_robot %>%
   theme_minimal() +
   ylim(0,5) +
   labs(title = "Männer und Frauen lassen sich lieber von einem Roboter als von einem Menschen zur Toilette begleiten", 
-       subtitle = "Balkendiagramm: KUT im Vergleich zwischen Männern und Frauen ", 
-       x = "Geschlecht",
+       subtitle = "Balkendiagramm: Toiletten-Begleitung im Vergleich Roboter vs. Mensch ", 
+       x = "robot_human [0 - 5]",
        y = "robot_toilet [0 - 5]",
        fill = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes.") +
