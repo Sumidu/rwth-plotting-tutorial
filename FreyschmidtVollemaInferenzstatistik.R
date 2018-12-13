@@ -102,4 +102,5 @@ ggplot(data_robot) + aes(x=robo_bed, y=robo_toilett, method = "kendall")
 #jittering muss man in der caption angeben
 ggplot(data_robot) + aes(x=robo_bed, y=robo_toilett) + geom_jitter(height = 0.3, width = 0.3)
 
-jmv::corrMatrix(data_robot, vars = c("robo_bed", "robo_toilet", "age"))
+###hier namen der variablen ersetzen
+jmv::corrMatrix(data_robot, vars = c("robo_bed", "robo_toilet", "age"), kendall = TRUE)
