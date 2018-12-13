@@ -12,6 +12,13 @@ data()
 data(starwars)
 starwars
 
+data(Titanic)
+Titanic1
+
+data(garcia)
+Titanic
+
+describe(Titanic)
 
 # starwars, faithful, diamonds, mpg, msleep, Garcia, Tal_Or, affect, epi, galton, msq, iqitems, sai, spi
 data(gss_cat)

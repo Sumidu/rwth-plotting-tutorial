@@ -1,5 +1,7 @@
 ### Einaldung Anne
 
+<<<<<<< HEAD
+=======
 # Anne Packages laden
 install.packages("tidyverse")
 
@@ -11,6 +13,7 @@ install.packages("esquisse")
 
 install.packages("ggthemes")
 
+>>>>>>> c5422b4a198ffac65a6142c9cf77d5b5416f0dd0
 # Bibliothek laden
 library(tidyverse)
 library(psych)
@@ -18,6 +21,11 @@ library(psych)
 # Liste der verfügbaren Datensätze
 data()
 
+<<<<<<< HEAD
+# Auswahl Datensatz
+data(starwars)
+starwars
+=======
 
 # Auswahl Datensatz
 data(starwars)
@@ -30,22 +38,5 @@ ggplot(data = starwars) +
   geom_boxplot(fill = "#ffffff") +
   coord_flip() +
   theme_minimal()
-library(ggplot2)
 
-ggplot(data = starwars) +
-  aes(x = eye_color, y = skin_color) +
-  geom_tile() +
-  labs(title = "Erscheinungsbild Universumsbewohner",
-    x = "Augenfarbe",
-    y = "Hautfarbe",
-    subtitle = "Vergleich Hautfarbe mit Augenfarbe") +
-  theme_minimal()
-ggplot(data = starwars) +
-  aes(x = gender, y = height) +
-  geom_boxplot(fill = "#0c4c8a") +
-  labs(title = "Erscheinungsbild Universumsbewohner",
-    x = "Geschlecht",
-    y = "Größe",
-    subtitle = "Vergleich Geschlecht und Größe") +
-  theme_minimal() 
-
+>>>>>>> c5422b4a198ffac65a6142c9cf77d5b5416f0dd0
