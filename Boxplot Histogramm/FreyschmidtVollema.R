@@ -42,4 +42,3 @@ ggplot(data = starwars) +
     y = "Größe",
     subtitle = "Vergleich Geschlecht und Größe") +
   theme_minimal() 
-
