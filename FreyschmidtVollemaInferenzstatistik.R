@@ -15,7 +15,8 @@ rwthcolor <- hcictools::rwth.colorpalette()
 ## Daten Laden
 data_robot <- readRDS("data/robo_pflege.rds")
 
-dfMediansplit <- transform(data_robot, age_group=cut(data_robot$age, breaks=c(-Inf, median(data_robot$age), Inf), labels=c("low", "high")))
+dfMediansplit <- transform(data_robot, age_group=cut(data_robot$age,
+                                                     breaks=c(-Inf, median(data_robot$age), Inf), labels=c("low", "high")))
 
 data_robot %>% 
   filter(gender != "keine Angabe") %>% 
