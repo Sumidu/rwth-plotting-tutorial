@@ -73,7 +73,7 @@ res$main
 
 data_robot %>%
   filter(gender!="keine Angabe") %>%
-  filter (job_type == "Arbeitnehmer/in" | job_type == "Studierend/Schüler/in") %>%
+  filter (job_type == "Arbeitnehmer/in" | job_type == "Selbstständig") %>%
   group_by(gender, job_type) %>%
   summarise (mean_kut=mean(kut), sem_kut = std.error(kut) ) %>%
 ggplot()+
@@ -82,10 +82,10 @@ ggplot()+
   geom_errorbar (width = 0.2, colour=rwthcolor$black) +
   geom_point(size=3)+
   geom_line(aes(group = gender)) +
-  ylim(3,6)+
+  ylim(1,6)+
   theme_gray()+
-  labs(title = "Männer glauben eher daran, Technik kontrollieren zu können.Studierende auch.",
-       subtitle= "Punktdiagramm: KUT im Vergleich zwischen Arbeitnehmerinnen und Studierenden, gruppiert nach Geschlecht.",
+  labs(title = "Es gibt keinen Interaktionseffekt zwischen dem KUT von ArbeitnehmerInnen und Selbstständigen",
+       subtitle= "Punktdiagramm: KUT im Vergleich zwischen ArbeitnehmerInnen und Selbstständigen, gruppiert nach Geschlecht.",
        caption= "Fehlerbalken zeigen Standardfehler des Mittelwertes.Y-Achse wurde aus Gründen der Übersichtlichkeit verschoben",
        y = "KUT [1-6]",
        x = "Erwerbstätigenstatus",
