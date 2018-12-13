@@ -28,10 +28,10 @@ data_robot %>%
   geom_errorbar(width = 0.2) +
   theme_minimal() +
   ylim(0,5) +
-  labs(title = "Männer glauben eher daran, Technik kontrollieren zu können", 
+  labs(title = "Männer und Frauen lassen sich lieber von einem Roboter als von einem Menschen zur Toilette begleiten", 
        subtitle = "Balkendiagramm: KUT im Vergleich zwischen Männern und Frauen ", 
        x = "Geschlecht",
-       y = "KUT [0 - 5]",
+       y = "robot_toilet [0 - 5]",
        fill = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes.") +
   NULL
@@ -48,10 +48,10 @@ data_robot %>%
   scale_colour_manual(values = c(rwthcolor$blue, rwthcolor$red)) +
   theme_minimal() +
   ylim(3.5,5) +
-  labs(title = "Männer glauben eher daran, Technik kontrollieren zu können", 
-       subtitle = "Punktdiagramm: KUT im Vergleich zwischen Männern und Frauen ", 
+  labs(title = "Menschen werden lieber von einem Roboter zur Toilette begleitet", 
+       subtitle = "Punktdiagramm: Begleitung zur Toilette durch Mensch oder Roboter", 
        x = "Geschlecht",
-       y = "KUT [1 - 6]",
+       y = "robot_toilet [1 - 6]",
        colour = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes. Y-Achse ist aus Gründen der Lesbarkeit verschoben.") +
   NULL

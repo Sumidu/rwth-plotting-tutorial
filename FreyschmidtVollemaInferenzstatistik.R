@@ -28,10 +28,10 @@ data_robot %>%
   geom_errorbar(width = 0.2) +
   theme_minimal() +
   ylim(0,5) +
-  labs(title = "Männer glauben eher daran, Technik kontrollieren zu können", 
-       subtitle = "Balkendiagramm: KUT im Vergleich zwischen Männern und Frauen ", 
+  labs(title = "Frauen lassen sich lieber von einem Roboter die Haare waschen als Männer", 
+       subtitle = "Balkendiagramm: robot_hair_wash im Vergleich zwischen Männern und Frauen ", 
        x = "Geschlecht",
-       y = "KUT [0 - 5]",
+       y = "robo_hair_Wash [1 - 6]",
        fill = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes.") +
   NULL
@@ -48,8 +48,8 @@ data_robot %>%
   scale_colour_manual(values = c(rwthcolor$blue, rwthcolor$red)) +
   theme_minimal() +
   ylim(3.5,5) +
-  labs(title = "Männer glauben eher daran, Technik kontrollieren zu können", 
-       subtitle = "Punktdiagramm: KUT im Vergleich zwischen Männern und Frauen ", 
+  labs(title = "Frauen lassen sich lieber als Männer die Haare von einem Roboter waschen", 
+       subtitle = "Punktdiagramm: Vergleich Männer und Frauen im Vertrauen zu Haare-waschendem Roboter ", 
        x = "Geschlecht",
        y = "KUT [1 - 6]",
        colour = "Geschlecht",
