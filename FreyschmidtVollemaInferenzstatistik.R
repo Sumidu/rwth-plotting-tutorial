@@ -91,3 +91,11 @@ data_robot %>%
   NULL
 #ggsave("FreyschmidtVollemaPunktdiagrammANOVA.pdf", width = 6, height = 5)
 
+##Aufgabe in der Stunde: Korrelation
+## Wenn das Diagramm komisch aussieht, wie ein Schachbrett, dann muss man Kendall tau rechen!
+data_robot
+
+cor.test(data_robot$age, data_robot$robo_toilett)
+
+ggplot(data_robot) + aes(x=robo_bed, y=robo_toilett, method = "kendall")
+
