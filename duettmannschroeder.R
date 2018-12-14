@@ -1,5 +1,3 @@
-## Leonie und Laura----
-
 ## Leonie und Laura ----
 
 
@@ -8,22 +6,24 @@
 library(tidyverse)
 library(psych)
 
+
+
 data(starwars)
+starwars
+
+
 library(ggplot2)
 
 ggplot(data = starwars) +
-  aes(x = gender, y = height) +
-  geom_boxplot(fill = '#ffffff') +
-  labs(title = 'Männer sind durchschnittlich größer als Frauen',
-    x = 'Geschlecht',
-    y = 'Größe (in cm)',
-    caption = 'Punkte zeigen Ausreißer',
-    subtitle = 'Boxplot von Geschlecht nach Größe') + coord_flip() +
-  theme_gray()
-
-ggsave("duettmannschroeder_boxplott.pdf", width = 7, height = 5)
-
-
+  aes(x = eye_color, y = height) +
+  geom_boxplot(fill = "#ffffff") +
+  labs(title = "Männer haben ein größeres Spektrum an Augenfarben",
+    x = "Augenfarbe",
+    y = "Größe (in cm)",
+    subtitle = "Boxplot von Augenfarbe nach Größe") +
+  theme_minimal() +
+  coord_flip() +
+  facet_wrap(vars(gender))
 
 
 

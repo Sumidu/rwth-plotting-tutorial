@@ -7,6 +7,9 @@ install.packages("esquisse")
 install.packages("ggthemes")
 install.packages("ggplot2")
 
+install.packages("jmv")
+install.packages("plotrix")
+
 install.packages("devtools")
 library(devtools)
 devtools::install_github("HCIC/r-tools")
