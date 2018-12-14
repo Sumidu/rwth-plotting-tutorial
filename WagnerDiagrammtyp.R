@@ -13,7 +13,7 @@ library(jmv)
 rwthcolor <- hcictools:: rwth.colorpalette()
 
 ## Daten laden
-data_robot <- readRDS("data/robo_pfleger.rds")
+data_robot <- readRDS("data/robo_pflege.rds")
 
 ## Unverbundener T-Test, Hypothese: Männer und Frauen unterscheiden sich im KUT.
 t.test (filter(data_robot, gender == "weiblich")$kut,
