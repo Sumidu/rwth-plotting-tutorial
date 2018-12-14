@@ -1,7 +1,8 @@
-#### HildebrandtCaleroValdezInferenzstatistik.R
+### Inferenzstatistik Eva Freyschmidt und Anne Vollema
 
 
 # source("install_libraries.R")
+library(tidyverse)
 library(tidyverse)
 library(ggthemes)
 library(ggplot2)
@@ -14,31 +15,27 @@ rwthcolor <- hcictools::rwth.colorpalette()
 ## Daten Laden
 data_robot <- readRDS("data/robo_pflege.rds")
 
-
-## Unverbundener T-Test. Hypothese: Männer und Frauen unterscheiden sich im KUT.
-t.test( filter(data_robot, gender == "weiblich")$kut, 
-        filter(data_robot, gender == "männlich")$kut )
-
+dfMediansplit <- transform(data_robot, age_group=cut(data_robot$age, breaks=c(-Inf, median(data_robot$age), Inf), labels=c("low", "high")))
 
 data_robot %>% 
   filter(gender != "keine Angabe") %>% 
   group_by(gender) %>% 
   summarise(mean_kut = mean(kut)-1, sem_kut = std.error(kut)) %>% 
-ggplot() +
- aes(x = gender, weight = mean_kut, fill = gender, ymin = mean_kut-sem_kut, ymax = mean_kut+sem_kut) +
+  ggplot() +
+  aes(x = gender, weight = mean_kut, fill = gender, ymin = mean_kut-sem_kut, ymax = mean_kut+sem_kut) +
   geom_bar(width = 0.5) +
   scale_fill_manual(values = c(rwthcolor$blue, rwthcolor$red)) +
   geom_errorbar(width = 0.2) +
   theme_minimal() +
   ylim(0,5) +
-  labs(title = "Männer glauben eher daran, Technik kontrollieren zu können", 
-       subtitle = "Balkendiagramm: KUT im Vergleich zwischen Männern und Frauen ", 
+  labs(title = "Frauen lassen sich lieber von einem Roboter die Haare waschen als Männer", 
+       subtitle = "Balkendiagramm: robot_hair_wash im Vergleich zwischen Männern und Frauen ", 
        x = "Geschlecht",
-       y = "KUT [0 - 5]",
+       y = "robo_hair_Wash [1 - 6]",
        fill = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes.") +
   NULL
-ggsave("HildebrandtCaleroValdesBalkendiagrammTtest.pdf", width = 6, height = 5)
+ggsave("FreyschmidtVollemaBalkendiagrammTtest.pdf", width = 6, height = 5)
 
 data_robot %>% 
   filter(gender != "keine Angabe") %>% 
@@ -51,14 +48,14 @@ data_robot %>%
   scale_colour_manual(values = c(rwthcolor$blue, rwthcolor$red)) +
   theme_minimal() +
   ylim(3.5,5) +
-  labs(title = "Männer glauben eher daran, Technik kontrollieren zu können", 
-       subtitle = "Punktdiagramm: KUT im Vergleich zwischen Männern und Frauen ", 
+  labs(title = "Frauen lassen sich lieber als Männer die Haare von einem Roboter waschen", 
+       subtitle = "Punktdiagramm: Vergleich Männer und Frauen im Vertrauen zu Haare-waschendem Roboter ", 
        x = "Geschlecht",
        y = "KUT [1 - 6]",
        colour = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes. Y-Achse ist aus Gründen der Lesbarkeit verschoben.") +
   NULL
-#ggsave("HildebrandtCaleroValdesPunktdiagrammTtest.pdf", width = 6, height = 5)
+#ggsave("FreyschmidtVollemaPunktdiagrammTtest.pdf", width = 6, height = 5)
 
 
 
@@ -68,7 +65,7 @@ data_robot %>%
   filter(job_type == "Arbeitnehmer/in" | job_type == "Studierend/Schüler/in" ) %>% 
   jmv::anova(dep = "kut", 
              factors = c("job_type", "gender") 
-) -> res
+  ) -> res
 
 res$main 
 
@@ -91,6 +88,5 @@ data_robot %>%
        colour = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes") +
   NULL
-#ggsave("HildebrandtCaleroValdesPunktdiagrammANOVA.pdf", width = 6, height = 5)
-  
-  
+#ggsave("FreyschmidtVollemaPunktdiagrammANOVA.pdf", width = 6, height = 5)
+
