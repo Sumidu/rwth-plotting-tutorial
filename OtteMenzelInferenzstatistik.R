@@ -40,4 +40,4 @@ data_robot %>%
        fill = "Geschlecht",
        caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes.") +
   NULL
-# ggsave("OtteMenzelBalkendiagrammTtest.pdf", width = 6, height = 5)
+ ggsave("OtteMenzelBalkendiagrammTtest.pdf", width = 6, height = 5)
