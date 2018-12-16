@@ -20,7 +20,28 @@ t.test( filter(data_robot, gender == "weiblich")$robo_food,
 
 #View(data_robot)
 
-## Visualisierung überarbeiten und nachreichen
+# Visualisierung
+library(ggplot2)
+
+data_robot %>% 
+  filter(gender ! = "keine Angabe") %>%
+  group_by(gender) %>%
+  summarise(mean_robo_food = mean(robo_food), sem_robo_food = std.error(robo_food)) %>%
+  aes(x = gender, weight = mean_robo_food, fill = gender) +
+  scale_fill_manual(values = c(rwthcolor$blue, rwthcolor$red)) + 
+  geom_bar() +
+  theme_grey() +
+  labs(title = "Frauen lassen sich eher von Robotern füttern",
+       subtitle = "Balkendiagramm: robo_food im Vergleich zwischen Männern und Frauen",
+       x = "Geschlecht",
+       y = "robo_food [1-6]",
+       fill = "Geschlecht",
+       caption = "Fehlberbalken zeigen Standardfehler des Mittelwertes") +
+  NULL 
+  
+
+
+
 
 #### 14.12.18 Präsenzübung Korrelation
 
@@ -47,7 +68,8 @@ t.test( filter(data_robot, gender == "weiblich")$robo_food,
 # Klausur !!!: Digramm > Wie sieht Korrelationskoeffizient aus ? Gespühr für Variablen-Zusammenhang
 
 ## Wie rechnen Wir Korrelation?
-jmv::corrMatrix(data_robot, vars = c("robo_bed", "robo_toilett", "age"))
+#jmv::corrMatrix(data_robot, vars = c("robo_bed", "robo_toilett", "age")), kendall = TRUE
+# mit dem Befehl üben_ Varaiblen austauschen und Tabelle bestimmen, kendall auf true setzen!
 
 # 1 Zeile Korrelation r, 2 Zeile p Wert > schwacher Zusammenhang Alter und Bett, aber nicht siginifkant 
 # > P-Wert ist größer als 0.5 ; p-Wert prüft Fehlerwahrscheinlchkeit, wenn wir HO annehmen; 
