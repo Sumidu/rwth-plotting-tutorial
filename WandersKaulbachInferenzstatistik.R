@@ -14,32 +14,33 @@ rwthcolor <- hcictools::rwth.colorpalette()
 ## Daten Laden
 data_robot <- readRDS("data/robo_pflege.rds")
 
-## Unverbundener T-Test: Männer und Frauen unterscheiden sich hinsichtlich robo_food
-t.test( filter(data_robot, gender == "weiblich")$robo_food,
-        filter(data_robot, gender == "männlich")$robo_food)
+## Unverbundener T-Test: Männer und Frauen unterscheiden sich hinsichtlich robo_med
+t.test( filter(data_robot, gender == "weiblich")$robo_med,
+        filter(data_robot, gender == "männlich")$robo_med)
 
 #View(data_robot)
 
-# Visualisierung
-library(ggplot2)
+# Visualisierung 
 
 data_robot %>% 
-  filter(gender ! = "keine Angabe") %>%
-  group_by(gender) %>%
-  summarise(mean_robo_food = mean(robo_food), sem_robo_food = std.error(robo_food)) %>%
-  aes(x = gender, weight = mean_robo_food, fill = gender) +
-  scale_fill_manual(values = c(rwthcolor$blue, rwthcolor$red)) + 
-  geom_bar() +
-  theme_grey() +
-  labs(title = "Frauen lassen sich eher von Robotern füttern",
-       subtitle = "Balkendiagramm: robo_food im Vergleich zwischen Männern und Frauen",
+  filter(gender != "keine Angabe") %>% 
+  group_by(gender) %>% 
+  summarise(mean_robo_med = mean(robo_med, na.rm = TRUE)-1, sem_robo_med = std.error(robo_med, na.rm = TRUE)) %>% 
+  ggplot() +
+  aes(x = gender, weight = mean_robo_med, fill = gender, ymin = mean_robo_med - sem_robo_med, ymax = mean_robo_med + sem_robo_med) +
+  scale_fill_manual(values = c(rwthcolor$blue, rwthcolor$red)) +
+  geom_bar(width = 0.5) +
+  geom_errorbar(width = 0.2) +
+  ylim(0,5) +
+  theme_gray() +
+  labs(title = "Männer lassen sich eher von einem Roboter Medikamente geben als Frauen", 
+       subtitle = "Balkendiagramm: robo_med im Vergleich zwischen Männern und Frauen ", 
        x = "Geschlecht",
-       y = "robo_food [1-6]",
+       y = "robo_med [1 - 6]",
        fill = "Geschlecht",
-       caption = "Fehlberbalken zeigen Standardfehler des Mittelwertes") +
-  NULL 
-  
-
+       caption = "Fehlerbalken zeigen Standardfehler des Mittelwertes.") +
+  NULL
+ggsave("WandersKaulbachBalkendiagramTtest.pdf", width = 6, height = 5)
 
 
 
