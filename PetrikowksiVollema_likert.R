@@ -10,14 +10,15 @@ zustimmungsskala <- c("stimme gar nicht zu", "stimme nicht zu",
 data$robo_bath <- factor(data$robo_bath, labels = zustimmungsskala)
 data$robo_bed <- factor(data$robo_bed, labels = zustimmungsskala)
 
-data %>% select(robo_bath) %>% likert()
+data %>% select(robo_bath) %>% as.data.frame() %>% likert()
 
 
-
-
-
-
-
+pl <- data %>%
+  select(robo_bath, robo_bed) %>%
+  as.data.frame() %>%
+  likert() %>%
+  plot() +
+  labs(title="Likert Diagramm Vergleich Mensch und Roboter", y="Prozent", x= "Plegevorgang", fill= "Antwort")
 
 
 
